@@ -1,4 +1,4 @@
-name: Github Actions Lint
+name: github-actions-lint
 
 on:
   push:
