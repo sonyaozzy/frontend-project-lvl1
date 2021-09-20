@@ -5,3 +5,4 @@
 [![github-actions-lint](https://github.com/sonyaozzy/frontend-project-lvl1/actions/workflows/github-actions-lint.yml/badge.svg)](https://github.com/sonyaozzy/frontend-project-lvl1/actions)
 [![asciicast](https://asciinema.org/a/zPm4FriFbBTWxd3EtfwvUhhtZ.svg)](https://asciinema.org/a/zPm4FriFbBTWxd3EtfwvUhhtZ) brain-even
 [![asciicast](https://asciinema.org/a/gq0FhA7VtNHfUhh8e4Kh8UYEa.svg)](https://asciinema.org/a/gq0FhA7VtNHfUhh8e4Kh8UYEa) brain-calc
+[![asciicast](https://asciinema.org/a/6Kno1ROt6GzenyYt6UTBkrPzE.svg)](https://asciinema.org/a/6Kno1ROt6GzenyYt6UTBkrPzE) brain-gcd

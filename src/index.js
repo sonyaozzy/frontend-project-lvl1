@@ -18,6 +18,7 @@ const newGame = (condition, question, correctAnswer) => {
       return;
     }
   }
+
   console.log(`Congratulations, ${name}!`);
 };
 
