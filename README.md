@@ -20,8 +20,6 @@
 
 ## Installation
 
----
-
 _This game is for the Node.js v16.8.0 and later._
 
 **For installation:**
@@ -34,8 +32,6 @@ _This game is for the Node.js v16.8.0 and later._
     <h2>Determination of an even number.</h2>
 </div>
 
----
-
 To run the game: _brain-even_
 
 [![asciicast](https://asciinema.org/a/zPm4FriFbBTWxd3EtfwvUhhtZ.svg)](https://asciinema.org/a/zPm4FriFbBTWxd3EtfwvUhhtZ)
@@ -43,8 +39,6 @@ To run the game: _brain-even_
 <div id="brain-calc">
     <h2>Calculator. Arithmetic expressions to be evaluated.</h2>
 </div>
-
----
 
 To run the game: _brain-calc_
 
@@ -54,8 +48,6 @@ To run the game: _brain-calc_
     <h2>Determination of the greatest common divisor.</h2>
 </div>
 
----
-
 To run the game: _brain-gcd_
 
 [![asciicast](https://asciinema.org/a/6Kno1ROt6GzenyYt6UTBkrPzE.svg)](https://asciinema.org/a/6Kno1ROt6GzenyYt6UTBkrPzE)
@@ -64,8 +56,6 @@ To run the game: _brain-gcd_
     <h2>Progression. Finds missing numbers in a sequence of numbers. </h2>
 </div>
 
----
-
 To run the game: _brain-progression_
 
 [![asciicast](https://asciinema.org/a/xH9wA5DLD4MKwYvftLnsCjTlk.svg)](https://asciinema.org/a/xH9wA5DLD4MKwYvftLnsCjTlk)
@@ -73,8 +63,6 @@ To run the game: _brain-progression_
 <div id="brain-prime">
     <h2>Determination of a prime number.</h2>
 </div>
-
----
 
 To run the game: _brain-prime_
 
