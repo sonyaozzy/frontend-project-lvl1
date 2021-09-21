@@ -27,7 +27,6 @@ const randomProgressions = (count) => {
 };
 
 const progressions = randomProgressions(3);
-// console.log(progressions);
 
 const randomMember = () => Math.floor(Math.random() * 10);
 
@@ -39,10 +38,8 @@ const randomMembers = (count) => {
 
   return members;
 };
-// console.log(randomMembers());
 
 const membersToHide = randomMembers(3);
-// console.log(membersToChange);
 
 const incompleteProgressions = (arr, arrMembers) => {
   const newArr = JSON.parse(JSON.stringify(arr));
@@ -60,7 +57,6 @@ const incompleteProgressions = (arr, arrMembers) => {
 };
 
 export const question = incompleteProgressions(progressions, membersToHide);
-// console.log(progressions);
 
 const answers = (arr, arrMembers) => {
   const answersArr = [];
