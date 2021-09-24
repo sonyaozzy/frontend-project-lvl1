@@ -14,6 +14,7 @@ const findDivisors = (number) => {
 
 const findCommonDivisors = (firstDivisors, secondDivisors) => {
   const commons = [];
+
   for (let i = 0; i < firstDivisors.length; i += 1) {
     for (let j = 0; j < secondDivisors.length; j += 1) {
       if (secondDivisors[j] === firstDivisors[i]) {

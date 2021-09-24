@@ -1,4 +1,4 @@
-import { getRandomNumberWithoutZero } from '../common.js';
+import { getRandomNumberWithoutZero, getCorrectAnswer } from '../common.js';
 
 const isPrime = (number) => {
   if (number === 1) {
@@ -17,7 +17,7 @@ export const gameCondition = 'Answer "yes" if given number is prime. Otherwise a
 
 export const generateQuestionAnswer = () => {
   const question = getRandomNumberWithoutZero();
-  const answer = isPrime(question) ? 'yes' : 'no';
+  const answer = getCorrectAnswer(isPrime(question));
 
   return [question, answer];
 };
