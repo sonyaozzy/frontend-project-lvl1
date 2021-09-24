@@ -1,59 +1,38 @@
-export const condition = 'What is the result of the expression?';
+import { getRandomNumber } from '../common.js';
 
-const randomNumber = () => Math.floor(Math.random() * 100);
+const calculateExpression = (firstNumber, operator, secondNumber) => {
+  let correctAnswer = 0;
+
+  switch (operator) {
+    case '+':
+      correctAnswer = firstNumber + secondNumber;
+      break;
+
+    case '-':
+      correctAnswer = firstNumber - secondNumber;
+      break;
+
+    case '*':
+      correctAnswer = firstNumber * secondNumber;
+      break;
+
+    default:
+  }
+
+  return correctAnswer;
+};
+
+export const gameCondition = 'What is the result of the expression?';
 
 const operators = ['+', '-', '*'];
-const randomOperator = () => operators[Math.floor(Math.random() * 3)];
+const getRandomOperator = () => operators[Math.floor(Math.random() * 3)];
 
-const randomExpressions = (count) => {
-  const expressions = [];
+export const generateQuestionAnswer = () => {
+  const firstNumber = getRandomNumber();
+  const secondNumber = getRandomNumber();
+  const operator = getRandomOperator();
+  const question = `${firstNumber} ${operator} ${secondNumber}`;
+  const answer = calculateExpression(firstNumber, operator, secondNumber).toString();
 
-  for (let i = 0; i < count; i += 1) {
-    expressions.push(`${randomNumber()} ${randomOperator()} ${randomNumber()}`);
-  }
-
-  return expressions;
+  return [question, answer];
 };
-
-export const question = randomExpressions(3);
-
-const stringToArr = (string) => {
-  const arr = string.split(' ');
-
-  return arr;
-};
-
-const answers = (expressions) => {
-  const answersArr = [];
-
-  for (let i = 0; i < expressions.length; i += 1) {
-    const expressionToArr = stringToArr(expressions[i]);
-
-    const firstNumber = Number(expressionToArr[0]);
-    const secondNumber = Number(expressionToArr[2]);
-
-    let correctAnswer = 0;
-
-    switch (expressionToArr[1]) {
-      case '+':
-        correctAnswer = firstNumber + secondNumber;
-        break;
-
-      case '-':
-        correctAnswer = firstNumber - secondNumber;
-        break;
-
-      case '*':
-        correctAnswer = firstNumber * secondNumber;
-        break;
-
-      default:
-    }
-
-    answersArr.push(correctAnswer.toString());
-  }
-
-  return answersArr;
-};
-
-export const correctAnswer = answers(question);

@@ -1,30 +1,7 @@
-export const condition = 'Find the greatest common divisor of given numbers.';
-
-const randomNumber = () => Math.floor(Math.random() * 100);
-
-const randomNumbers = (count) => {
-  const numbers = [];
-
-  for (let i = 0; i < count; i += 1) {
-    numbers.push(`${randomNumber()} ${randomNumber()}`);
-  }
-
-  return numbers;
-};
-
-export const question = randomNumbers(3);
-
-const stringToArr = (string) => {
-  const arr = string.split(' ');
-
-  return arr;
-};
+import { getRandomNumberWithoutZero } from '../common.js';
 
 const findDivisors = (number) => {
   const divisors = [];
-  if (number === 1) {
-    divisors.push(1);
-  }
 
   for (let i = 1; i <= number; i += 1) {
     if (number % i === 0) {
@@ -48,31 +25,31 @@ const findCommonDivisors = (firstDivisors, secondDivisors) => {
   return commons;
 };
 
-const answers = (numbers) => {
-  const answersArr = [];
+const calculateGCD = (firstNumber, secondNumber) => {
+  const firstNumberDivisors = findDivisors(firstNumber);
+  const secondNumberDivisors = findDivisors(secondNumber);
 
-  for (let i = 0; i < numbers.length; i += 1) {
-    const numbersToArr = stringToArr(numbers[i]);
+  const commonDivisors = findCommonDivisors(firstNumberDivisors, secondNumberDivisors);
 
-    const firstNumber = Number(numbersToArr[0]);
-    const secondNumber = Number(numbersToArr[1]);
+  let result = 0;
 
-    const commonDivisors = findCommonDivisors(
-      findDivisors(firstNumber), findDivisors(secondNumber),
-    );
-
-    let result = 0;
-
-    for (let j = 0; j < commonDivisors.length; j += 1) {
-      if (commonDivisors[j] > result) {
-        result = commonDivisors[j];
-      }
+  for (let i = 0; i < commonDivisors.length; i += 1) {
+    if (commonDivisors[i] > result) {
+      result = commonDivisors[i];
     }
-
-    answersArr.push(result.toString());
   }
 
-  return answersArr;
+  return result;
 };
 
-export const correctAnswer = answers(question);
+export const gameCondition = 'Find the greatest common divisor of given numbers.';
+
+export const generateQuestionAnswer = () => {
+  const firstNumber = getRandomNumberWithoutZero();
+  const secondNumber = getRandomNumberWithoutZero();
+
+  const question = `${firstNumber} ${secondNumber}`;
+  const answer = calculateGCD(firstNumber, secondNumber).toString();
+
+  return [question, answer];
+};

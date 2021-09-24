@@ -1,31 +1,12 @@
-export const condition = 'Answer "yes" if the number is even, otherwise answer "no".';
+import { getRandomNumber } from '../common.js';
 
-const randomNumber = () => Math.floor(Math.random() * 100);
+const isEven = (number) => number % 2 === 0;
 
-const randomNumbers = (count) => {
-  const arr = [];
+export const gameCondition = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  for (let i = 0; i < count; i += 1) {
-    arr.push(randomNumber());
-  }
+export const generateQuestionAnswer = () => {
+  const question = getRandomNumber();
+  const answer = isEven(question) ? 'yes' : 'no';
 
-  return arr;
+  return [question, answer];
 };
-
-export const question = randomNumbers(3);
-
-const isEven = (numbers) => {
-  const answers = [];
-
-  for (let i = 0; i < numbers.length; i += 1) {
-    if (question[i] % 2 === 0) {
-      answers.push('yes');
-    } else {
-      answers.push('no');
-    }
-  }
-
-  return answers;
-};
-
-export const correctAnswer = isEven(question);

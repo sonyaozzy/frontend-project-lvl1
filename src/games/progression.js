@@ -1,70 +1,29 @@
-export const condition = 'What number is missing in the progression?';
+import { getRandomNumber, getRandomNumberWithoutZero } from '../common.js';
 
-const randomNumber = () => Math.floor(Math.random() * 100);
-
-const randomProgressions = (count) => {
-  const progression = [];
-
-  let result = randomNumber();
-  let arr = [result];
-  let difference = randomNumber();
-
-  for (let i = 0; i < count; i += 1) {
-    for (let j = 1; j < 10; j += 1) {
-      result += difference;
-
-      arr.push(result);
-    }
-
-    progression.push(arr);
-
-    result = randomNumber();
-    arr = [result];
-    difference = randomNumber();
+const getProgression = (start, step, length) => {
+  const progression = [start];
+  let member = start;
+  for (let i = 1; i < length; i += 1) {
+    member += step;
+    progression.push(member);
   }
 
   return progression;
 };
 
-const progressions = randomProgressions(3);
-
 const randomMember = () => Math.floor(Math.random() * 10);
 
-const randomMembers = (count) => {
-  const members = [];
-  for (let i = 0; i < count; i += 1) {
-    members.push(randomMember());
-  }
+export const gameCondition = 'What number is missing in the progression?';
 
-  return members;
+export const generateQuestionAnswer = () => {
+  const progression = getProgression(getRandomNumber(), getRandomNumberWithoutZero(), 10);
+  const progressionCopy = [...progression];
+
+  const memberToHide = randomMember();
+  progressionCopy[memberToHide] = '..';
+
+  const question = progressionCopy.join(' ');
+  const answer = progression[memberToHide].toString();
+
+  return [question, answer];
 };
-
-const membersToHide = randomMembers(3);
-
-const incompleteProgressions = (arr, arrMembers) => {
-  const newArr = JSON.parse(JSON.stringify(arr));
-
-  for (let i = 0; i < arrMembers.length; i += 1) {
-    newArr[i][arrMembers[i]] = '..';
-  }
-
-  const arrsToString = [];
-  for (let i = 0; i < newArr.length; i += 1) {
-    arrsToString.push(newArr[i].join(' '));
-  }
-
-  return arrsToString;
-};
-
-export const question = incompleteProgressions(progressions, membersToHide);
-
-const answers = (arr, arrMembers) => {
-  const answersArr = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    answersArr.push(arr[i][arrMembers[i]].toString());
-  }
-
-  return answersArr;
-};
-
-export const correctAnswer = answers(progressions, membersToHide);

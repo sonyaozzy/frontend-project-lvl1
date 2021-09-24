@@ -1,40 +1,23 @@
-export const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-const randomNumber = () => Math.floor(Math.random() * 100);
-
-const randomNumbers = (count) => {
-  const arr = [];
-
-  for (let i = 0; i < count; i += 1) {
-    arr.push(randomNumber());
-  }
-
-  return arr;
-};
-
-export const question = randomNumbers(3);
+import { getRandomNumberWithoutZero } from '../common.js';
 
 const isPrime = (number) => {
-  if (number < 2) {
-    return 'no';
+  if (number === 1) {
+    return false;
   }
 
   for (let i = 2; i <= Math.sqrt(number); i += 1) {
     if (number % i === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
-const answers = (numbers) => {
-  const arr = [];
+export const gameCondition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  for (let i = 0; i < numbers.length; i += 1) {
-    arr.push(isPrime(numbers[i]));
-  }
+export const generateQuestionAnswer = () => {
+  const question = getRandomNumberWithoutZero();
+  const answer = isPrime(question) ? 'yes' : 'no';
 
-  return arr;
+  return [question, answer];
 };
-
-export const correctAnswer = answers(question);
