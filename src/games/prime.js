@@ -1,7 +1,8 @@
-import { getRandomNumberWithoutZero, getCorrectAnswer } from '../common.js';
+import getRandomNumber from '../common.js';
+import newGame from '../index.js';
 
 const isPrime = (number) => {
-  if (number === 1) {
+  if (number < 2) {
     return false;
   }
 
@@ -13,11 +14,17 @@ const isPrime = (number) => {
   return true;
 };
 
-export const gameCondition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-export const generateQuestionAnswer = () => {
-  const question = getRandomNumberWithoutZero();
-  const answer = getCorrectAnswer(isPrime(question));
+const generateQuestionAnswer = () => {
+  const fromNumber = 0;
+
+  const question = getRandomNumber(fromNumber);
+  const answer = isPrime(question) ? 'yes' : 'no';
 
   return [question, answer];
 };
+
+const brainPrime = () => newGame(description, generateQuestionAnswer);
+
+export default brainPrime;

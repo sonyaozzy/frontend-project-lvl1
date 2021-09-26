@@ -1,29 +1,38 @@
-import { getRandomNumber, getRandomNumberWithoutZero } from '../common.js';
+import getRandomNumber from '../common.js';
+import newGame from '../index.js';
 
 const getProgression = (start, step, length) => {
-  const progression = [start];
-  let member = start;
-  for (let i = 1; i < length; i += 1) {
-    member += step;
-    progression.push(member);
+  const progression = [];
+  for (let i = 0; i < length; i += 1) {
+    progression.push(start + step * i);
   }
 
   return progression;
 };
 
-const randomMember = () => Math.floor(Math.random() * 10);
+const description = 'What number is missing in the progression?';
 
-export const gameCondition = 'What number is missing in the progression?';
+const generateQuestionAnswer = () => {
+  const fromNumber = 0;
+  const fromNumberForStep = 1;
+  const membersCount = 10;
 
-export const generateQuestionAnswer = () => {
-  const progression = getProgression(getRandomNumber(), getRandomNumberWithoutZero(), 10);
-  const progressionCopy = [...progression];
+  const progression = getProgression(getRandomNumber(fromNumber),
+    getRandomNumber(fromNumberForStep), membersCount);
 
-  const memberToHide = randomMember();
-  progressionCopy[memberToHide] = '..';
+  const firstMember = 0;
+  const lastMember = membersCount - 1;
 
-  const question = progressionCopy.join(' ');
+  const memberToHide = getRandomNumber(firstMember, lastMember);
   const answer = progression[memberToHide].toString();
+
+  progression[memberToHide] = '..';
+
+  const question = progression.join(' ');
 
   return [question, answer];
 };
+
+const brainProgression = () => newGame(description, generateQuestionAnswer);
+
+export default brainProgression;

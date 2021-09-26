@@ -1,19 +1,16 @@
 import readlineSync from 'readline-sync';
-import * as even from './games/even.js';
-import * as prime from './games/prime.js';
-import * as gcd from './games/gcd.js';
-import * as calc from './games/calc.js';
-import * as progression from './games/progression.js';
 
-const newGame = (game) => {
+const roundCount = 3;
+
+const newGame = (description, questionAnswer) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
 
-  console.log(game.gameCondition);
+  console.log(description);
 
-  for (let i = 0; i < 3; i += 1) {
-    const [question, answer] = game.generateQuestionAnswer();
+  for (let i = 0; i < roundCount; i += 1) {
+    const [question, answer] = questionAnswer();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
@@ -28,8 +25,4 @@ const newGame = (game) => {
   console.log(`Congratulations, ${name}!`);
 };
 
-export const brainEven = () => newGame(even);
-export const brainPrime = () => newGame(prime);
-export const brainGCD = () => newGame(gcd);
-export const brainCalc = () => newGame(calc);
-export const brainProgression = () => newGame(progression);
+export default newGame;
