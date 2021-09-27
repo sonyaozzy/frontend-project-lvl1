@@ -2,24 +2,11 @@ import getRandomNumber from '../common.js';
 import newGame from '../index.js';
 
 const calculateGCD = (firstNumber, secondNumber) => {
-  let firstNum = firstNumber;
-  let secondNum = secondNumber;
-
-  if (firstNumber < secondNumber) {
-    firstNum = secondNumber;
-    secondNum = firstNumber;
+  if (!secondNumber) {
+    return firstNumber;
   }
 
-  if (secondNum === 0) {
-    return firstNum;
-  }
-
-  const remainder = firstNum % secondNum;
-
-  if (remainder === 0) {
-    return secondNum;
-  }
-  return calculateGCD(secondNum, remainder);
+  return calculateGCD(secondNumber, firstNumber % secondNumber);
 };
 
 const description = 'Find the greatest common divisor of given numbers.';
